@@ -20,5 +20,6 @@ Future<void> main() async {
 // Init the application by running the MyApp widget, which encompasses
 // all aspects of the Material Design, including themes, localization, and
 // other bindings.
+
   runApp(const MyApp());
 }
