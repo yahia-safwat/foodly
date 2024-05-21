@@ -1,41 +1,45 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../../core/errors/failures.dart';
 import '../../domain/entities/restaurant.dart';
 import '../../domain/repositories/restaurant_repository.dart';
 import '../models/restaurant_model.dart';
 
 class RestaurantRepositoryImpl implements RestaurantRepository {
   @override
-  Future<Restaurant?> fetchRestaurant({required String restaurantId}) async {
+  Future<Either<Failure, Restaurant>> fetchRestaurant(
+      {required String restaurantId}) async {
     try {
       final restaurant = restaurants.firstWhere(
         (restaurant) => restaurant['id'] == restaurantId,
       );
       final result = RestaurantModel.fromJson(restaurant);
-      return result.toEntity();
+      return right(result.toEntity());
     } catch (err) {
       throw Exception('Failed to fetch the restaurant: $err');
     }
   }
 
   @override
-  Future<List<Restaurant>> fetchRestaurants() async {
+  Future<Either<Failure, List<Restaurant>>> fetchRestaurants() async {
     try {
       final result = restaurants
           .map((restaurant) => RestaurantModel.fromJson(restaurant))
           .toList();
 
-      return result.map((restaurant) => restaurant.toEntity()).toList();
+      return right(result.map((restaurant) => restaurant.toEntity()).toList());
     } catch (err) {
       throw Exception('Failed to fetch the restaurants: $err');
     }
   }
 
   @override
-  Future<List<Restaurant>> fetchPopularRestaurants() async {
+  Future<Either<Failure, List<Restaurant>>> fetchPopularRestaurants() async {
     return fetchRestaurants();
   }
 
   @override
-  Future<List<Restaurant>> fetchFeaturedRestaurants() async {
+  Future<Either<Failure, List<Restaurant>>> fetchFeaturedRestaurants() async {
     return fetchRestaurants();
   }
 }

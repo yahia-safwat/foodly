@@ -1,5 +1,8 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../../core/errors/failures.dart';
 import '../entities/food_category.dart';
 
 abstract class FoodCategoryRepository {
-  Future<List<FoodCategory>> fetchFoodCategories();
+  Future<Either<Failure, List<FoodCategory>>> fetchFoodCategories();
 }

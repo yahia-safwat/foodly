@@ -1,10 +1,13 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../../core/errors/failures.dart';
 import '../../domain/entities/food_category.dart';
 import '../../domain/repositories/food_category_repository.dart';
 import '../models/food_category_model.dart';
 
 class FoodCategoryRepositoryImpl implements FoodCategoryRepository {
   @override
-  Future<List<FoodCategory>> fetchFoodCategories() async {
+  Future<Either<Failure, List<FoodCategory>>> fetchFoodCategories() async {
     try {
       await Future.delayed(const Duration(seconds: 1));
       final result = foodCategories.map((category) {
@@ -15,7 +18,7 @@ class FoodCategoryRepositoryImpl implements FoodCategoryRepository {
         );
       }).toList();
 
-      return result.map((category) => category.toEntity()).toList();
+      return right(result.map((category) => category.toEntity()).toList());
     } catch (err) {
       throw Exception('Error fetching food categories: $err');
     }

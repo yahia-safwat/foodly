@@ -1,11 +1,15 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../../core/errors/failures.dart';
 import '../entities/restaurant.dart';
 
 abstract class RestaurantRepository {
-  Future<Restaurant?> fetchRestaurant({required String restaurantId});
+  Future<Either<Failure, Restaurant?>> fetchRestaurant(
+      {required String restaurantId});
 
-  Future<List<Restaurant>> fetchRestaurants();
+  Future<Either<Failure, List<Restaurant>>> fetchRestaurants();
 
-  Future<List<Restaurant>> fetchPopularRestaurants();
+  Future<Either<Failure, List<Restaurant>>> fetchPopularRestaurants();
 
-  Future<List<Restaurant>> fetchFeaturedRestaurants();
+  Future<Either<Failure, List<Restaurant>>> fetchFeaturedRestaurants();
 }
