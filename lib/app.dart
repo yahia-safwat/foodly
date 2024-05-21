@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/di/injection_container.dart' as di;
 import 'core/routes/app_router.dart';
-import 'core/routes/app_routes.dart';
 import 'features/restaurant/presentation/blocs/restaurants/restaurants_bloc.dart';
 
 class MyApp extends StatelessWidget {
@@ -30,11 +29,10 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Foodly App',
-      onGenerateRoute: AppRouter.generateRoute,
-      initialRoute: AppRoutes.home,
+      routerConfig: AppRouter.router,
     );
   }
 }
