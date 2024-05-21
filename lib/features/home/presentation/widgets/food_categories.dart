@@ -20,8 +20,7 @@ class FoodCategories extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 30,
-                    backgroundColor: Colors.transparent,
-                    // backgroundColor: colorScheme.background,
+                    backgroundColor: Theme.of(context).colorScheme.background,
                     child: Image.asset(category.imageUrl),
                   ),
                   const SizedBox(height: 8.0),
@@ -29,10 +28,9 @@ class FoodCategories extends StatelessWidget {
                     category.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 12.0, fontWeight: FontWeight.bold),
-                    // style: textTheme.bodySmall!
-                    //     .copyWith(fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ],
               ),
