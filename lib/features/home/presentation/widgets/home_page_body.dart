@@ -1,37 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../restaurant/presentation/blocs/restaurants/restaurants_bloc.dart';
+import 'featured_restaurants.dart';
+import 'food_categories.dart';
+import 'popular_restaurants.dart';
+import 'restaurant_filters.dart';
+import 'shops_nearby.dart';
 
 class HomePageBody extends StatelessWidget {
   const HomePageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Home Body'));
+    return BlocBuilder<RestaurantsBloc, RestaurantsState>(
+      builder: (context, state) {
+        return state.when(
+          initial: () => const Center(child: CircularProgressIndicator()),
+          loading: () => const Center(child: CircularProgressIndicator()),
+          loaded: (foodCategories, popularRestaurants, featuredRestaurants) {
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  FoodCategories(foodCategories: foodCategories),
+                  const SizedBox(height: 16.0),
+                  const RestaurantFilters(),
+                  FeaturedRestaurants(featuredRestaurants: featuredRestaurants),
+                  const ShopsNearby(),
+                  PopularRestaurants(popularRestaurants: popularRestaurants),
+                ],
+              ),
+            );
+          },
+          error: () => const Center(child: Text('err message')),
+        );
+      },
+    );
   }
 }
-
-
-// BlocBuilder<HomeBloc, HomeState>(
-//         builder: (context, state) {
-//           if (state.status == HomeStatus.initial ||
-//               state.status == HomeStatus.loading) {
-//             return const Center(child: CircularProgressIndicator());
-//           }
-//           if (state.status == HomeStatus.loaded) {
-//             return const SingleChildScrollView(
-//               padding: EdgeInsets.all(8.0),
-//               child: Column(
-//                 children: [
-//                   // _FoodCategories(),
-//                   SizedBox(height: 16.0),
-//                   // _RestaurantFilters(),
-//                   // _FeaturedRestaurants(),
-//                   // _ShopsNearby(),
-//                   // _PopularRestaurants(),
-//                 ],
-//               ),
-//             );
-//           } else {
-//             return const Center(child: Text('Something went wrong!'));
-//           }
-//         },
-//       ),
