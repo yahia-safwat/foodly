@@ -33,6 +33,23 @@ class RestaurantsBloc extends Bloc<RestaurantsEvent, RestaurantsState> {
     final categoriesResult = await fetchFoodCategories(NoParams());
     final popularResult = await fetchPopularRestaurants(NoParams());
     final featuredResult = await fetchFeaturedRestaurants(NoParams());
+    final shopsNearby = [
+      {
+        'title': '7-Eleven',
+        'subtitle': '10 mins',
+        'imageUrl': 'assets/images/711.png',
+      },
+      {
+        'title': 'Guardian',
+        'subtitle': '15 mins',
+        'imageUrl': 'assets/images/guardian.png',
+      },
+      {
+        'title': 'Walgreens',
+        'subtitle': '15 mins',
+        'imageUrl': 'assets/images/walgreens.png',
+      },
+    ];
 
     categoriesResult.fold(
       (failure) => emit(const _Error()),
@@ -48,6 +65,7 @@ class RestaurantsBloc extends Bloc<RestaurantsEvent, RestaurantsState> {
                   foodCategories: foodCategories,
                   popularRestaurants: popularRestaurants,
                   featuredRestaurants: featuredRestaurants,
+                  shopsNearby: shopsNearby,
                 ));
               },
             );

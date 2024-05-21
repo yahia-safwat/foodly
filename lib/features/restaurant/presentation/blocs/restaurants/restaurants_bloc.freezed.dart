@@ -173,7 +173,8 @@ mixin _$RestaurantsState {
     required TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)
         loaded,
     required TResult Function() error,
   }) =>
@@ -185,7 +186,8 @@ mixin _$RestaurantsState {
     TResult? Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult? Function()? error,
   }) =>
@@ -197,7 +199,8 @@ mixin _$RestaurantsState {
     TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -291,7 +294,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)
         loaded,
     required TResult Function() error,
   }) {
@@ -306,7 +310,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -321,7 +326,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -417,7 +423,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)
         loaded,
     required TResult Function() error,
   }) {
@@ -432,7 +439,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -447,7 +455,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
@@ -509,7 +518,8 @@ abstract class _$$LoadedImplCopyWith<$Res> {
   $Res call(
       {List<FoodCategory> foodCategories,
       List<Restaurant> popularRestaurants,
-      List<Restaurant> featuredRestaurants});
+      List<Restaurant> featuredRestaurants,
+      List<Map<String, dynamic>> shopsNearby});
 }
 
 /// @nodoc
@@ -526,6 +536,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
     Object? foodCategories = null,
     Object? popularRestaurants = null,
     Object? featuredRestaurants = null,
+    Object? shopsNearby = null,
   }) {
     return _then(_$LoadedImpl(
       foodCategories: null == foodCategories
@@ -540,6 +551,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
           ? _value._featuredRestaurants
           : featuredRestaurants // ignore: cast_nullable_to_non_nullable
               as List<Restaurant>,
+      shopsNearby: null == shopsNearby
+          ? _value._shopsNearby
+          : shopsNearby // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
     ));
   }
 }
@@ -550,10 +565,12 @@ class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl(
       {required final List<FoodCategory> foodCategories,
       required final List<Restaurant> popularRestaurants,
-      required final List<Restaurant> featuredRestaurants})
+      required final List<Restaurant> featuredRestaurants,
+      required final List<Map<String, dynamic>> shopsNearby})
       : _foodCategories = foodCategories,
         _popularRestaurants = popularRestaurants,
-        _featuredRestaurants = featuredRestaurants;
+        _featuredRestaurants = featuredRestaurants,
+        _shopsNearby = shopsNearby;
 
   final List<FoodCategory> _foodCategories;
   @override
@@ -581,9 +598,17 @@ class _$LoadedImpl implements _Loaded {
     return EqualUnmodifiableListView(_featuredRestaurants);
   }
 
+  final List<Map<String, dynamic>> _shopsNearby;
+  @override
+  List<Map<String, dynamic>> get shopsNearby {
+    if (_shopsNearby is EqualUnmodifiableListView) return _shopsNearby;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_shopsNearby);
+  }
+
   @override
   String toString() {
-    return 'RestaurantsState.loaded(foodCategories: $foodCategories, popularRestaurants: $popularRestaurants, featuredRestaurants: $featuredRestaurants)';
+    return 'RestaurantsState.loaded(foodCategories: $foodCategories, popularRestaurants: $popularRestaurants, featuredRestaurants: $featuredRestaurants, shopsNearby: $shopsNearby)';
   }
 
   @override
@@ -596,7 +621,9 @@ class _$LoadedImpl implements _Loaded {
             const DeepCollectionEquality()
                 .equals(other._popularRestaurants, _popularRestaurants) &&
             const DeepCollectionEquality()
-                .equals(other._featuredRestaurants, _featuredRestaurants));
+                .equals(other._featuredRestaurants, _featuredRestaurants) &&
+            const DeepCollectionEquality()
+                .equals(other._shopsNearby, _shopsNearby));
   }
 
   @override
@@ -604,7 +631,8 @@ class _$LoadedImpl implements _Loaded {
       runtimeType,
       const DeepCollectionEquality().hash(_foodCategories),
       const DeepCollectionEquality().hash(_popularRestaurants),
-      const DeepCollectionEquality().hash(_featuredRestaurants));
+      const DeepCollectionEquality().hash(_featuredRestaurants),
+      const DeepCollectionEquality().hash(_shopsNearby));
 
   @JsonKey(ignore: true)
   @override
@@ -620,11 +648,13 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)
         loaded,
     required TResult Function() error,
   }) {
-    return loaded(foodCategories, popularRestaurants, featuredRestaurants);
+    return loaded(
+        foodCategories, popularRestaurants, featuredRestaurants, shopsNearby);
   }
 
   @override
@@ -635,12 +665,13 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult? Function()? error,
   }) {
     return loaded?.call(
-        foodCategories, popularRestaurants, featuredRestaurants);
+        foodCategories, popularRestaurants, featuredRestaurants, shopsNearby);
   }
 
   @override
@@ -651,13 +682,15 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(foodCategories, popularRestaurants, featuredRestaurants);
+      return loaded(
+          foodCategories, popularRestaurants, featuredRestaurants, shopsNearby);
     }
     return orElse();
   }
@@ -704,11 +737,13 @@ abstract class _Loaded implements RestaurantsState {
   const factory _Loaded(
       {required final List<FoodCategory> foodCategories,
       required final List<Restaurant> popularRestaurants,
-      required final List<Restaurant> featuredRestaurants}) = _$LoadedImpl;
+      required final List<Restaurant> featuredRestaurants,
+      required final List<Map<String, dynamic>> shopsNearby}) = _$LoadedImpl;
 
   List<FoodCategory> get foodCategories;
   List<Restaurant> get popularRestaurants;
   List<Restaurant> get featuredRestaurants;
+  List<Map<String, dynamic>> get shopsNearby;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -757,7 +792,8 @@ class _$ErrorImpl implements _Error {
     required TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)
         loaded,
     required TResult Function() error,
   }) {
@@ -772,7 +808,8 @@ class _$ErrorImpl implements _Error {
     TResult? Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult? Function()? error,
   }) {
@@ -787,7 +824,8 @@ class _$ErrorImpl implements _Error {
     TResult Function(
             List<FoodCategory> foodCategories,
             List<Restaurant> popularRestaurants,
-            List<Restaurant> featuredRestaurants)?
+            List<Restaurant> featuredRestaurants,
+            List<Map<String, dynamic>> shopsNearby)?
         loaded,
     TResult Function()? error,
     required TResult orElse(),

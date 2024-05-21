@@ -10,6 +10,7 @@ class RestaurantsState with _$RestaurantsState {
     required List<FoodCategory> foodCategories,
     required List<Restaurant> popularRestaurants,
     required List<Restaurant> featuredRestaurants,
+    required List<Map<String, dynamic>> shopsNearby,
   }) = _Loaded;
 
   const factory RestaurantsState.error() = _Error;

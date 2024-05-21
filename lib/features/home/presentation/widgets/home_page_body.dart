@@ -18,7 +18,12 @@ class HomePageBody extends StatelessWidget {
         return state.when(
           initial: () => const Center(child: CircularProgressIndicator()),
           loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (foodCategories, popularRestaurants, featuredRestaurants) {
+          loaded: (
+            foodCategories,
+            popularRestaurants,
+            featuredRestaurants,
+            shopsNearby,
+          ) {
             return SingleChildScrollView(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -27,7 +32,7 @@ class HomePageBody extends StatelessWidget {
                   const SizedBox(height: 16.0),
                   const RestaurantFilters(),
                   FeaturedRestaurants(featuredRestaurants: featuredRestaurants),
-                  const ShopsNearby(),
+                  ShopsNearby(shopsNearby: shopsNearby),
                   PopularRestaurants(popularRestaurants: popularRestaurants),
                 ],
               ),
