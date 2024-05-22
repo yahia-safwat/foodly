@@ -7,7 +7,9 @@ import '../../features/restaurant/domain/repositories/restaurant_repository.dart
 import '../../features/restaurant/domain/usecases/fetch_featured_restaurants.dart';
 import '../../features/restaurant/domain/usecases/fetch_food_categories_usecase.dart';
 import '../../features/restaurant/domain/usecases/fetch_popular_restaurants.dart';
+import '../../features/restaurant/domain/usecases/fetch_restaurant.dart';
 import '../../features/restaurant/domain/usecases/fetch_restaurants.dart';
+import '../../features/restaurant/presentation/blocs/restaurant_details/restaurant_details_bloc.dart';
 import '../../features/restaurant/presentation/blocs/restaurants/restaurants_bloc.dart';
 
 //! Service Locator Setup
@@ -26,6 +28,7 @@ Future<void> init() async {
         fetchPopularRestaurants: sl(),
         fetchFeaturedRestaurants: sl(),
       ));
+  sl.registerFactory(() => RestaurantDetailsBloc(fetchRestaurantUsecase: sl()));
 
   // Use cases
   sl.registerLazySingleton(
@@ -36,6 +39,8 @@ Future<void> init() async {
       () => FetchPopularRestaurantsUseCase(restaurantRepository: sl()));
   sl.registerLazySingleton(
       () => FetchFeaturedRestaurantsUseCase(restaurantRepository: sl()));
+  sl.registerLazySingleton(
+      () => FetchRestaurantUsecase(restaurantRepository: sl()));
 
   // Repository
   sl.registerLazySingleton<FoodCategoryRepository>(

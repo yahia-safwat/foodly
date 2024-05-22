@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/routes/app_routes.dart';
+
 class MainNavBar extends StatelessWidget {
   const MainNavBar({super.key});
 
@@ -21,16 +23,16 @@ class MainNavBar extends StatelessWidget {
       onTap: (index) {
         switch (index) {
           case 0:
-            context.pushNamed('home');
+            context.goNamed(AppRoutes.home);
             break;
           case 1:
-            context.pushNamed('search');
+            context.goNamed(AppRoutes.search);
             break;
           case 2:
-            context.pushNamed('cart');
+            context.goNamed(AppRoutes.cart);
             break;
           case 3:
-            context.pushNamed('user-account');
+            context.goNamed(AppRoutes.userAccount);
             break;
           default:
         }

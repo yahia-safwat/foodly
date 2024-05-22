@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../core/routes/app_routes.dart';
 import '../../features/restaurant/domain/entities/restaurant.dart';
 
 class RestaurantPreviewCard extends StatelessWidget {
@@ -18,16 +20,8 @@ class RestaurantPreviewCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) {
-        //       return RestaurantDetailsScreen(
-        //         restaurantId: restaurant.id,
-        //       );
-        //     },
-        //   ),
-        // );
+        context.push(AppRoutes.restaurantDetails
+            .replaceFirst(':restaurantId', restaurant.id));
       },
       child: Container(
         width: size.width,

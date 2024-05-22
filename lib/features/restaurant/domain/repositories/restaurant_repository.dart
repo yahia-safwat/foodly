@@ -4,7 +4,7 @@ import '../../../../core/errors/failures.dart';
 import '../entities/restaurant.dart';
 
 abstract class RestaurantRepository {
-  Future<Either<Failure, Restaurant?>> fetchRestaurant(
+  Future<Either<Failure, Restaurant>> fetchRestaurant(
       {required String restaurantId});
 
   Future<Either<Failure, List<Restaurant>>> fetchRestaurants();
